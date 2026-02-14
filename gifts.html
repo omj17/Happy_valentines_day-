@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Gifts 💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+            margin: 0;
+            padding-top: 100px;
+        }
+
+        h1 {
+            color: #d63384;
+        }
+
+        .giftContainer {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .giftBox {
+            width:100px;
+            height:100px;
+            background:#ff4d6d;
+            color:white;
+            font-size:2rem;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:15px;
+            cursor:pointer;
+            transition:0.3s ease;
+        }
+
+        .giftBox:hover {
+            transform:scale(1.1);
+            box-shadow:0 0 20px #ff1f4d;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>From me to you, Happy Valentine’s! 💖</h1>
+
+    <div class="giftContainer">
+        <div class="giftBox" onclick="window.location.href='gift1.html'">1</div>
+        <div class="giftBox">2</div>
+        <div class="giftBox">3</div>
+    </div>
+
+</body>
+</html>
