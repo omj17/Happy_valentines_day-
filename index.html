@@ -154,11 +154,64 @@
                 response.innerText = "Still not it 👀";
             }
             else if (wrongAttempts >= 3) {
-                hint.innerText = "really girl? the word is cyberhunt smh 🤦‍♂️";
-                response.innerText = "";
-                input.disabled = true;
-                submitBtn.disabled = true;
+    hint.innerText = "really girl? the word is cyberhunt smh 🤦‍♂️";
+    response.innerText = "";
+
+    input.disabled = true;
+    submitBtn.disabled = true;
+
+    // Create the Ok 🙄 button
+    const revealBtn = document.createElement("button");
+    revealBtn.innerText = "Ok 🙄";
+    revealBtn.style.marginTop = "20px";
+    revealBtn.style.padding = "10px 20px";
+    revealBtn.style.fontSize = "1rem";
+    revealBtn.style.border = "none";
+    revealBtn.style.borderRadius = "8px";
+    revealBtn.style.background = "#ff4d6d";
+    revealBtn.style.color = "white";
+    revealBtn.style.cursor = "pointer";
+
+    revealBtn.addEventListener("click", function() {
+        document.body.innerHTML = `
+            <h1 style="margin-top:100px;color:#d63384;">
+                From me to you, Happy Valentine’s! 💖
+            </h1>
+
+            <div style="margin-top:50px; display:flex; justify-content:center; gap:30px;">
+                <div class="giftBox">1</div>
+                <div class="giftBox">2</div>
+                <div class="giftBox">3</div>
+            </div>
+        `;
+
+        const style = document.createElement("style");
+        style.innerHTML = `
+            .giftBox {
+                width:100px;
+                height:100px;
+                background:#ff4d6d;
+                color:white;
+                font-size:2rem;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                border-radius:15px;
+                cursor:pointer;
+                transition:0.3s ease;
             }
+
+            .giftBox:hover {
+                transform:scale(1.1);
+                box-shadow:0 0 20px #ff1f4d;
+            }
+        `;
+        document.head.appendChild(style);
+    });
+
+    document.body.appendChild(revealBtn);
+}
+
         });
     });
 
