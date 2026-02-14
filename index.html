@@ -102,14 +102,16 @@
 
             if (value === "cyberhunt") {
 
-    if (wrongAttempts === 0) {
-        // She got it first try
-        window.location.href = "cheater.html";
-    } else {
-    window.location.href = "gifts.html";
-}
-    return;
-}
+            // 30% chance to go to cheater page
+            if (Math.random() < 0.3) {
+                window.location.href = "cheater.html";
+            } else {
+                window.location.href = "gifts.html";
+            }
+
+            return;
+            }
+
 
 
 
