@@ -101,46 +101,51 @@
             const value = input.value.trim().toLowerCase();
 
             if (value === "cyberhunt") {
-    document.body.innerHTML = `
-        <h1 style="margin-top:100px;color:#d63384;">
-            From me to you, Happy Valentine’s! 💖
-        </h1>
 
-        <div style="margin-top:50px; display:flex; justify-content:center; gap:30px;">
+    if (wrongAttempts === 0) {
+        // She got it first try
+        window.location.href = "cheater.html";
+    } else {
+        // Normal win
+        document.body.innerHTML = `
+            <h1 style="margin-top:100px;color:#d63384;">
+                From me to you, Happy Valentine’s! 💖
+            </h1>
 
-            <div class="giftBox" onclick="window.location.href='gift1.html'">1</div>
-            <div class="giftBox">2</div>
-            <div class="giftBox">3</div>
+            <div style="margin-top:50px; display:flex; justify-content:center; gap:30px;">
+                <div class="giftBox" onclick="window.location.href='gift1.html'">1</div>
+                <div class="giftBox">2</div>
+                <div class="giftBox">3</div>
+            </div>
+        `;
 
-        </div>
-    `;
+        const style = document.createElement("style");
+        style.innerHTML = `
+            .giftBox {
+                width:100px;
+                height:100px;
+                background:#ff4d6d;
+                color:white;
+                font-size:2rem;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                border-radius:15px;
+                cursor:pointer;
+                transition:0.3s ease;
+            }
 
-    // Add styling dynamically
-    const style = document.createElement("style");
-    style.innerHTML = `
-        .giftBox {
-            width:100px;
-            height:100px;
-            background:#ff4d6d;
-            color:white;
-            font-size:2rem;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            border-radius:15px;
-            cursor:pointer;
-            transition:0.3s ease;
-        }
-
-        .giftBox:hover {
-            transform:scale(1.1);
-            box-shadow:0 0 20px #ff1f4d;
-        }
-    `;
-    document.head.appendChild(style);
+            .giftBox:hover {
+                transform:scale(1.1);
+                box-shadow:0 0 20px #ff1f4d;
+            }
+        `;
+        document.head.appendChild(style);
+    }
 
     return;
 }
+
 
 
             wrongAttempts++;
