@@ -73,38 +73,56 @@
 
     guessBtn.addEventListener("click", function() {
         document.body.innerHTML = `
-            <h1 style="margin-top:100px;color:#d63384;">Hint (starts with C and ends with t)</h1>
-            <input id="guessInput" type="text" maxlength="9" 
-                   placeholder="Enter 9-letter word"
-                   style="padding:10px;font-size:1.2rem;border-radius:8px;border:none;margin-top:20px;">
+            <h1 id="hint" style="margin-top:100px;color:#d63384;">
+                Hint (starts with C and ends with t)
+            </h1>
+
+            <input id="guessInput" type="text" maxlength="9"
+                placeholder="Enter 9-letter word"
+                style="padding:10px;font-size:1.2rem;border-radius:8px;border:none;margin-top:20px;">
             <br>
-            <button id="submitGuess" 
-                    style="margin-top:20px;padding:10px 20px;font-size:1rem;border:none;border-radius:8px;background:#ff4d6d;color:white;cursor:pointer;">
+
+            <button id="submitGuess"
+                style="margin-top:20px;padding:10px 20px;font-size:1rem;border:none;border-radius:8px;background:#ff4d6d;color:white;cursor:pointer;">
                 Submit
             </button>
+
             <p id="response" style="margin-top:20px;font-size:1.2rem;color:#b03060;"></p>
         `;
 
         const submitBtn = document.getElementById("submitGuess");
         const input = document.getElementById("guessInput");
         const response = document.getElementById("response");
+        const hint = document.getElementById("hint");
 
-        let hasGuessed = false;
+        let wrongAttempts = 0;
 
         submitBtn.addEventListener("click", function() {
-            if (hasGuessed) return;
+            const value = input.value.trim().toLowerCase();
 
-            const value = input.value.trim();
-
-            if (value.length !== 9) {
-                response.innerText = "It must be 9 letters 😌";
+            if (value === "cyberhunt") {
+                response.innerText = "Okayyy you got it 😌💘";
+                input.disabled = true;
+                submitBtn.disabled = true;
                 return;
             }
 
-            response.innerText = "Interesting guess… 💘";
-            input.disabled = true;
-            submitBtn.disabled = true;
-            hasGuessed = true;
+            wrongAttempts++;
+
+            if (wrongAttempts === 1) {
+                hint.innerText = "Hint (starts with cy and ends with nt)";
+                response.innerText = "Nope… try again 😌";
+            }
+            else if (wrongAttempts === 2) {
+                hint.innerText = "Hint (starts with cyb and ends with unt)";
+                response.innerText = "Still not it 👀";
+            }
+            else if (wrongAttempts >= 3) {
+                hint.innerText = "really girl? the word is cyberhunt smh 🤦‍♂️";
+                response.innerText = "";
+                input.disabled = true;
+                submitBtn.disabled = true;
+            }
         });
     });
 
@@ -127,7 +145,6 @@
 
     setInterval(createHeart, 500);
 </script>
-
 
 </body>
 </html>
