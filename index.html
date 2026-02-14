@@ -72,7 +72,40 @@
     const subtext = document.getElementById("subtext");
 
     guessBtn.addEventListener("click", function() {
-        subtext.innerText = "You better start guessing 😏💘";
+        document.body.innerHTML = `
+            <h1 style="margin-top:100px;color:#d63384;">Hint (starts with C and ends with t)</h1>
+            <input id="guessInput" type="text" maxlength="9" 
+                   placeholder="Enter 9-letter word"
+                   style="padding:10px;font-size:1.2rem;border-radius:8px;border:none;margin-top:20px;">
+            <br>
+            <button id="submitGuess" 
+                    style="margin-top:20px;padding:10px 20px;font-size:1rem;border:none;border-radius:8px;background:#ff4d6d;color:white;cursor:pointer;">
+                Submit
+            </button>
+            <p id="response" style="margin-top:20px;font-size:1.2rem;color:#b03060;"></p>
+        `;
+
+        const submitBtn = document.getElementById("submitGuess");
+        const input = document.getElementById("guessInput");
+        const response = document.getElementById("response");
+
+        let hasGuessed = false;
+
+        submitBtn.addEventListener("click", function() {
+            if (hasGuessed) return;
+
+            const value = input.value.trim();
+
+            if (value.length !== 9) {
+                response.innerText = "It must be 9 letters 😌";
+                return;
+            }
+
+            response.innerText = "Interesting guess… 💘";
+            input.disabled = true;
+            submitBtn.disabled = true;
+            hasGuessed = true;
+        });
     });
 
     noGuessBtn.addEventListener("click", function() {
@@ -94,6 +127,7 @@
 
     setInterval(createHeart, 500);
 </script>
+
 
 </body>
 </html>
